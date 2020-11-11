@@ -20,11 +20,11 @@ Java第四次实验——接口及异常实验
    根据输入情况，要在程序中做异常处理。
 ## 三、实验过程
 1. 创建接口：
-       学生管理接口包括缴纳学费、查学费的方法；
-       教师管理接口包括发放薪水和查询薪水的方法；
+       学生管理接口StudentManagement包括缴纳学费、查学费的方法；
+       教师管理接口TeacherManagement包括发放薪水和查询薪水的方法；
        税收接口包括计算税率的数据。
 2. 创建硕士研究生类DoctoralCandidate实现接口StudentManagement,TeacherManagement,Tax
-   1>. 重写学生管理接口，教师管理接口和税收接口中的所有方法；
+   重写StudentManagement接口，TeacherManagement接口和Tax接口中的所有方法；
    硕士研究生有属性：编号，姓名，性别，年龄，学费，工资，一年的总学费，一年的总工资，一年的总收入;   
    要求setNum(int num)方法将参数num的值赋值给num，要求getNum()返回num的值；
    要求setName(String name)方法将参数name的值赋值给name，要求getName()返回name的值；
@@ -33,30 +33,128 @@ Java第四次实验——接口及异常实验
    要求setTuition(double tuition)方法将参数tuition的值赋值给tuition，要求getTuition()返回tuition的值；
    要求setSalary(double salary)方法将参数salary的值赋值给salary，要求getSalary()返回salary的值；
    创建DoctoralCandidate类的构造方法，实例化对象;  
-   创建toString()方法，返回DoctoralCandidate的信息。 
- 5. 创建主类Test类
-  * main方法中创建两个Student对象stu1、stu2,stu1将自己的属性：编号，姓名，性别，年龄，民族,设置为(1,"Karry","男",21,"汉族"),stu2将自己的属性：编号，姓名，性别，年龄，民族设置为(2,"鹿晗","男",21,"汉族");
-  * main方法中创建两个Teacher对象tea1、tea2,tea1将自己的属性：编号，姓名，性别，年龄，民族,设置为(1,"Wang","女",31,"汉族"),tea2将自己的属性：编号，姓名，性别，年龄，民族设置为(2,"Wang","女",30,"汉族");
-  * main方法中创建两个Course对象cour1、cour2,cour1将自己的属性：课程编号，课程名字，授课老师，上课地点，上课时间，课程学分设置为(1,"高数","Jackson","1教102","08:00-09:30",2.0),cour2将自己的属性：课程编号，课程名字，授课老师，上课地点，上课时间，课程学分设置为( );
-  * stu1调用setCourse(Course course)方法，调用时实参是cour1,stu2调用setCourse(Course course)方法，调用时实参是cour2;
-  * stu1调用setTeacher(String teacher)方法，调用时实参是tea1,stu2调用setTeacher(String teacher)方法，调用时实参是tea2;
-  * 创建if-else()方法判断学生所选课程是否为空，若为空，输出该学生已经退课或还没有选课，否则，输出学生的信息，该学生所选课程的信息，该学生所选课程的老师的信息。
+   创建toString()方法，返回DoctoralCandidate的信息;
+   创建calculateTax（）方法，计算税收；
+   创建calculateTuitionSum（），calculateSalarySum（），calculateIncome（）计算一年的总学费和一年的总工资和一年总收入。
+ 3. 创建主类Test类
+  * main方法中创建DoctoralCandidate对象doctoralfirst将自己的属性：编号，姓名，性别，年龄,设置为(1,"Karry","男",21)；
+  * 使用if-else语句判断是否有此人的信息，如果有输出；
+  * 使用Scanner类实现运行时交互式输入学费，工资；  
+  * doctoralfirst调用calculateTuitionSum（）方法，调用时实参是输入的tuition；doctoralfirst调用calculateSalarySum（）方法，调用时实参是输入的salary；
+  * doctoralfirst调用calculateIncome（）方法，计算一年的总收入；doctoralfirst调用calculateTax（）方法，计算税收；
+  * 自定义异常，如果输入的学费或工资为负数，抛出异常。
 ## 四、核心方法
-1. 方法1:get(),set()方法
+1. 方法1:定义接口
 ```
-public int getNumber() {
-		return number;
-}
-public void setNumber(int number) {
-		this.number = number;
+interface StudentManagement {
+	void payTuition(double pt);//缴纳学费
+	void inquireTuition(double it);//查学费
 }
  ```
+2. 方法2:实现接口并重写接口中的全部方法
+```
+public class DoctoralCandidate implements StudentManagement,TeacherManagement,Tax{
+	public void paySalary(double ps) {
+		// TODO Auto-generated method stub
+		salary=ps;
+	}
+	public void inquireSalary(double is) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void payTuition(double pt) {
+		// TODO Auto-generated method stub
+		tuition=pt;
+	}
+	public void inquireTuition(double it) {
+		// TODO Auto-generated method stub
+		
+	}
+}
+ ```
+3. 方法3:计算税收
+```
+public double calculateTax(double tuitionSum, double salarySum) {
+	double sum = salarySum - tuitionSum;
+	if (sum<=standard0*12) {
+		tax = 0;
+	} else if (sum >= standard0*12 && sum <= standard1*12) {
+		tax = sum * rate1;
+	} else if (sum >= standard1*12 && sum <= standard2*12) {
+		tax = sum * rate2;
+	}
+	return tax;
+}
+ ```
+4. 方法4:计算一年的总学费和一年的总工资和一年总收入
+```
+public double calculateTuitionSum(double tuition){
+		tuitionSum=tuition*2;
+		return tuitionSum;
+	}
+	public double calculateSalarySum(double salary){
+		salarySum=salary*12;
+		return salarySum;
+	}
+	public double calculateIncome(double tuitionSum,double salarySum){
+		income=salarySum - tuitionSum;
+		return income;
+	}
+ ```
+5. 方法5:自定义异常
+```
+class MyException extends Exception {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	String message;
 
+	public MyException(int m) {
+		message = "输入的学费或工资" + m + "为负数，不符合规定";
+	}
+
+	public String warnness() {
+		return message;
+	}
+}
+public static void checkTuition(double tuition) throws MyException {
+		if (tuition <= 0) {
+			throw new MyException((int) tuition);
+		}
+	}	
+	public static void checkSalary(double salary) throws MyException {
+		if (salary <= 0) {
+			throw new MyException((int) salary);
+		}
+	}
+ ```
+6. 方法6:scanner类
+```
+Scanner scanner=new Scanner(System.in);
+double tuition=scanner.nextDouble();
+ ```
+7. 方法7：try-catch块
+``` 
+try{
+	System.out.println("请输入你的学费：");
+	double tuition=scanner.nextDouble();
+	doctoralfirst.payTuition(tuition);
+	checkSalary(tuition);
+	System.out.println("请输入你的月工资：");
+	double salary=scanner.nextDouble();
+	doctoralfirst.paySalary(salary);
+	checkSalary(salary);		
+}
+catch(MyException e){
+	System.out.println(e.warnness());
+}
+```
 ## 五、实验结果
   运行成功，输出结果：  
-  
   ![img](https://p.qlogo.cn/qqmail_head/PiajxSqBRaEKWNg0BcGz3pTg6yE2DqrvMicXDJ6Zw45uy5UjNF76ZtianA68CxVA6tczq9D4Ricjz3w/0)
-  
+  异常：
+  ![img](https://p.qlogo.cn/qqmail_head/PiajxSqBRaEKWNg0BcGz3pTg6yE2DqrvMicXDJ6Zw45uy5UjNF76ZtianA68CxVA6tczq9D4Ricjz3w/0)
 ## 六、实验感想
-  
+  学习了Java中抽象类和抽象方法的定义及实现，掌握了Java中接口的定义及接口的实现方法，学会了自定义异常的使用方法，学习使用了scanner类。
 
