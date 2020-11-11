@@ -152,9 +152,9 @@ catch(MyException e){
 ```
 ## 五、实验结果
   运行成功，输出结果：  
-  ![img](https://p.qlogo.cn/qqmail_head/PiajxSqBRaEKWNg0BcGz3pTg6yE2DqrvMicXDJ6Zw45uy5UjNF76ZtianA68CxVA6tczq9D4Ricjz3w/0)
+  ![img](https://p.qlogo.cn/qqmail_head/gWicbXPiajJn9xvkjMtjhZX8Z8MlIPx6oOUBn0uxIOn7uqBDOoaQmnyGkJe494I5t709iaJhjiblwPI/0)
   异常：
-  ![img](https://p.qlogo.cn/qqmail_head/PiajxSqBRaEKWNg0BcGz3pTg6yE2DqrvMicXDJ6Zw45uy5UjNF76ZtianA68CxVA6tczq9D4Ricjz3w/0)
+  ![img](https://p.qlogo.cn/qqmail_head/gWicbXPiajJn9xvkjMtjhZX8Z8MlIPx6oOUBn0uxIOn7tvx0ib3NKTR6YicCl2dwqtV6xTia3wVEpA0c/0)
 ## 六、实验感想
   学习了Java中抽象类和抽象方法的定义及实现，掌握了Java中接口的定义及接口的实现方法，学会了自定义异常的使用方法，学习使用了scanner类。
 
