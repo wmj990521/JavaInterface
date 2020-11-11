@@ -24,9 +24,14 @@ Java第四次实验——接口及异常实验
        教师管理接口包括发放薪水和查询薪水的方法；
        税收接口包括计算税率的数据。
 2. 创建硕士研究生类DoctoralCandidate实现接口StudentManagement,TeacherManagement,Tax
-   重写学生管理接口，教师管理接口和税收接口中的所有方法；
+   1>. 重写学生管理接口，教师管理接口和税收接口中的所有方法；
    硕士研究生有属性：编号，姓名，性别，年龄，学费，工资，一年的总学费，一年的总工资，一年的总收入;   
-   要求setNumber(int number)方法将参数number的值赋值给number，要求getNumber()返回number的值；   
+   要求setNum(int num)方法将参数num的值赋值给num，要求getNum()返回num的值；
+   要求setName(String name)方法将参数name的值赋值给name，要求getName()返回name的值；
+   要求setSex(String sex)方法将参数sex的值赋值给sex，要求getSex()返回sex的值；
+   要求setAge(int age)方法将参数age的值赋值给age，要求getAge()返回age的值；
+   要求setTuition(double tuition)方法将参数tuition的值赋值给tuition，要求getTuition()返回tuition的值；
+   要求setSalary(double salary)方法将参数salary的值赋值给salary，要求getSalary()返回salary的值；
    创建DoctoralCandidate类的构造方法，实例化对象;  
    创建toString()方法，返回DoctoralCandidate的信息。 
  5. 创建主类Test类
